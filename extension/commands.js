@@ -54,11 +54,11 @@ exports.extractStyle = () => editorContext((editor, selection, text, selectedTex
             let row = editor.document.lineCount + 1, stylesText;
 
             if (!!~text.indexOf('StyleSheet.create')) {
-                row = lineColumn(text).fromIndex(text.indexOf('StyleSheet.create')).line;
+                row = lineColumn(text).fromIndex(text.indexOf('styles =')).line;
                 stylesText = `${input}: ${selectedText},\n`;
             }
             else {
-                stylesText = `\n\nconst styles = StyleSheet.create({\n${input}: ${selectedText},\n})`;
+                stylesText = `\n\nconst styles = {\n${input}: ${selectedText},\n}`;
             }
 
             edit.replace(selection, `styles.${input}`);
