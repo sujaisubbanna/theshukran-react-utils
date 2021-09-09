@@ -53,7 +53,7 @@ exports.extractStyle = () => editorContext((editor, selection, text, selectedTex
         editor.edit(edit => {
             let row = editor.document.lineCount + 1, stylesText;
 
-            if (!!~text.indexOf('StyleSheet.create')) {
+            if (!!~text.indexOf('const styles =')) {
                 row = lineColumn(text).fromIndex(text.indexOf('styles =')).line;
                 stylesText = `${input}: ${selectedText},\n`;
             }
